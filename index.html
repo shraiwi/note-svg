@@ -3,27 +3,48 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>note.svg</title>
+        <title>note.svg | Take your notes to go!</title>
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <!-- Drawing tools container -->
-        <div id="pen-container">
-            <button id="pencil-button" class="selected"><img src="assets/pencil.svg" alt="Draw"></button>
-            <button id="eraser-button"><img src="assets/eraser.svg" alt="Erase"></button>
+        <div id="header-container">
+            <h1 id="page-title">🥝 <a href="/">shraiwi</a></h1>
+            <code>note.svg</code>
         </div>
-        
-        <!-- Main drawing container -->
-        <div id="container"></div>
-        
-        <!-- Action buttons container -->
-        <div id="button-container">
-            <button id="save-button" title="Save as SVG"><img src="assets/download_24dp.svg" alt="Save"></button>
-            <button id="copy-button" title="Copy SVG to clipboard"><img src="assets/content_copy_24dp.svg" alt="Copy"></button>
-            <button id="upload-button" title="Upload SVG file"><img src="assets/upload_24dp.svg" alt="Upload"></button>
-            <button id="paste-button" title="Paste SVG from clipboard"><img src="assets/content_paste_24dp.svg" alt="Paste"></button>
-            <button id="resize-button" title="Resize canvas"><img src="assets/resize_24dp.svg" alt="Resize"></button>
+
+        <div id="drawing-container">
+            <!-- Drawing tools container -->
+            <div id="pen-container">
+                <button id="pencil-button" class="selected"><img src="assets/pencil.svg" alt="Draw"></button>
+                <button id="eraser-button"><img src="assets/eraser.svg" alt="Erase"></button>
+            </div>
+            
+            <!-- Main drawing container -->
+            <div id="container"></div>
+            
+            <!-- Action buttons container -->
+            <div id="button-container">
+                <button id="save-button" title="Save as SVG"><img src="assets/download_24dp.svg" alt="Save"></button>
+                <button id="copy-button" title="Copy SVG to clipboard"><img src="assets/content_copy_24dp.svg" alt="Copy"></button>
+                <button id="upload-button" title="Upload SVG file"><img src="assets/upload_24dp.svg" alt="Upload"></button>
+                <button id="paste-button" title="Paste SVG from clipboard"><img src="assets/content_paste_24dp.svg" alt="Paste"></button>
+                <button id="resize-button" title="Resize canvas"><img src="assets/resize_24dp.svg" alt="Resize"></button>
+            </div>
+
+            <fieldset id="description-container">
+                <legend>What is this?</legend>
+                <p>Editable <code>.svgs</code> for you to copy and paste in your notes!</p>
+                <p>
+                    Use your pen, finger, or mouse to annotate in the box (👆),
+                    and then you can copy the SVG code using the buttons below.
+                </p>
+                <p>
+                    I made this so I could quickly and easily add sticky notes to 
+                    my Obsidian notes. Maybe you'll like it too!
+                </p>
+            </div>
         </div>
+
         
         <!-- Scripts -->
         <script src="src/fit-curve.min.js"></script>

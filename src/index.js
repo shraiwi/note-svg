@@ -17,8 +17,8 @@ function createDefaultDocument() {
     return {
         tagName: 'svg',
         noteSvgAttributes: {
-            width: 480,
-            height: 480
+            width: 360,
+            height: 360
         },
         attributes: {
             xmlns: "http://www.w3.org/2000/svg",

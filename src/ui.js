@@ -54,6 +54,7 @@ export function updateDocument(noteDocument, renderer) {
     const container = document.getElementById('container');
     const buttonContainer = document.getElementById('button-container');
     const penContainer = document.getElementById('pen-container');
+    const descriptionContainer = document.getElementById('description-container');
 
     container.style.width = noteDocument.noteSvgAttributes.width + 'px';
     container.style.height = noteDocument.noteSvgAttributes.height + 'px';
@@ -61,6 +62,7 @@ export function updateDocument(noteDocument, renderer) {
     // Set button container width to match the container
     buttonContainer.style.width = noteDocument.noteSvgAttributes.width + 'px';
     penContainer.style.width = noteDocument.noteSvgAttributes.width + 'px';
+    descriptionContainer.style.width = noteDocument.noteSvgAttributes.width + 'px';
 
     renderer.resizeCanvas();
 
