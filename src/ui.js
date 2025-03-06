@@ -13,7 +13,7 @@ import { downloadBlob, isValidSvg, parseSizeString, saveToLocalStorage } from ".
 const LINK_ELEMENT = {
     tagName: 'a',
     attributes: {
-        href: window.location.origin,
+        href: window.location.pathname,
         target: "_blank"
     },
     children: [
