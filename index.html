@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>note.svg</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <!-- Drawing tools container -->
+        <div id="pen-container">
+            <button id="pencil-button" class="selected"><img src="assets/pencil.svg" alt="Draw"></button>
+            <button id="eraser-button"><img src="assets/eraser.svg" alt="Erase"></button>
+        </div>
+        
+        <!-- Main drawing container -->
+        <div id="container"></div>
+        
+        <!-- Action buttons container -->
+        <div id="button-container">
+            <button id="save-button" title="Save as SVG"><img src="assets/download_24dp.svg" alt="Save"></button>
+            <button id="copy-button" title="Copy SVG to clipboard"><img src="assets/content_copy_24dp.svg" alt="Copy"></button>
+            <button id="upload-button" title="Upload SVG file"><img src="assets/upload_24dp.svg" alt="Upload"></button>
+            <button id="paste-button" title="Paste SVG from clipboard"><img src="assets/content_paste_24dp.svg" alt="Paste"></button>
+            <button id="resize-button" title="Resize canvas"><img src="assets/resize_24dp.svg" alt="Resize"></button>
+        </div>
+        
+        <!-- Scripts -->
+        <script src="src/fit-curve.min.js"></script>
+        <script type="module" src="src/index.js"></script>
+    </body>
+</html>

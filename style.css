@@ -1,0 +1,127 @@
+
+/**
+ * note.svg application styles
+ */
+
+/* Theme variables */
+:root {
+    --transition-duration: 150ms;
+    --button-icon-size: 24px;
+    --button-gap: 8px;
+}
+
+/* Light/Dark mode themes */
+@media (prefers-color-scheme: light) {
+    body {
+        --primary-bg: rgb(239, 245, 241);
+        --primary-color: black;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --primary-bg: rgb(28, 32, 30);
+        --primary-color: white;
+    }
+
+    #button-container button img, 
+    #pen-container button img, 
+    #container {
+        filter: invert(100%);
+    }
+}
+
+/* Global styles */
+* {
+    transition-duration: var(--transition-duration);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-bg);
+    gap: var(--button-gap);
+}
+
+/* Drawing container */
+#container {
+    border: 2px solid #000;
+    overflow: hidden;
+    touch-action: none;
+    position: relative;
+}
+
+#container canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Button containers */
+#button-container, 
+#pen-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--button-gap);
+}
+
+/* Pen container specific styles */
+#pen-container {
+    margin-bottom: -8px;
+    padding-left: 8px;
+    overflow: hidden;
+}
+
+#pen-container button {
+    background-color: var(--primary-bg);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: -24px;
+}
+
+#pen-container button:hover {
+    margin-top: 12px;
+    margin-bottom: -12px;
+}
+
+#pen-container button.selected {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Action buttons */
+#button-container button {
+    background-color: var(--primary-bg);
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#button-container button:hover {
+    scale: 1.125;
+}
+
+#button-container button img {
+    width: var(--button-icon-size);
+    height: var(--button-icon-size);
+}
