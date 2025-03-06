@@ -77,7 +77,7 @@ export function transform(node) {
 
         case 'path':
             (/** @type {SvgNode} */ (node)).noteSvgAttributes = {
-                stroke: node.attributes.stroke || '#000000',
+                stroke: node.attributes.stroke || '#000',
                 strokeWidth: parseFloat(node.attributes['stroke-width']) || 1
             };
 
@@ -96,9 +96,11 @@ export function transform(node) {
 /**
  * Converts a tree of SvgNodes to an SVG string
  * @param {SvgNode | string} node - The node to convert
+ * @param {string | null} [overrideStroke=null] - The color to override the strokes with.
+ * @param {string | null} [overrideBg=null] - The color to override the background color with.
  * @returns {string} - The SVG string representation
  */
-export function toSvg(node) {
+export function toSvg(node, overrideStroke=null, overrideBg=null) {
     if (typeof node === 'string') return node;
     // Start with existing attributes from node.
     let attributes = { ...node.attributes };
@@ -108,6 +110,8 @@ export function toSvg(node) {
             // For 'svg', add width and height from noteSvgAttributes.
             attributes.width = node.noteSvgAttributes.width;
             attributes.height = node.noteSvgAttributes.height;
+            if (overrideStroke && overrideBg)
+                attributes.style = `border: 2px solid ${overrideStroke}; background-color: ${overrideBg};`;
             break;
         case "notesvg":
             // For 'notesvg', add version from noteSvgAttributes.
@@ -115,7 +119,7 @@ export function toSvg(node) {
             break;
         case "path":
             // For 'path', serialize the array of commands in d to a string.
-            attributes.stroke = node.noteSvgAttributes.stroke;
+            attributes.stroke = overrideStroke || node.noteSvgAttributes.stroke;
             attributes["stroke-width"] = node.noteSvgAttributes.strokeWidth;
             break;
     }
@@ -129,7 +133,7 @@ export function toSvg(node) {
     // Recursively serialize children.
     if (node.children && node.children.length > 0) {
         for (const child of node.children) {
-            svg += toSvg(child);
+            svg += toSvg(child, overrideStroke, overrideBg);
         }
     }
     // Closing tag.

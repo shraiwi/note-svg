@@ -214,7 +214,7 @@ export class StrokeRenderer {
 
                 // Set stroke style based on node attributes or default to black
                 this.ctxBack.beginPath();
-                this.ctxBack.strokeStyle = node.noteSvgAttributes?.stroke || '#000';
+                this.ctxBack.strokeStyle = '#000';
                 this.ctxBack.lineWidth = node.noteSvgAttributes?.strokeWidth || 2;
                 this.ctxBack.stroke(node.renderAttributes.path);
                 break;

@@ -78,24 +78,44 @@ export function updateDocument(noteDocument, renderer) {
  * Serializes the noteDocument to an SVG string
  * @param {Object} noteDocument - The note document to serialize
  * @param {boolean} [addLink=true] - Whether to add a link to the SVG
+ * @param {boolean} [matchColorScheme=true] - Whether to change the SVG color scheme
  * @returns {string} - The serialized SVG string
  */
-export function serializeDocument(noteDocument, addLink = true) {    
+export function serializeDocument(noteDocument, addLink = true, matchColorScheme = true) {    
+    let overrideStroke = null;
+    let overrideBg = null;
+    const style = window.getComputedStyle(document.body);
+
+    const strokeColor = style.getPropertyValue('--primary-color');
+    const bgColor = style.getPropertyValue('--primary-bg');
+
+    console.log(strokeColor, bgColor);
+
     // Add link if not there
     if (addLink) {
         noteDocument.children ||= [];
-
-        const hasLink = noteDocument.children.find((item) => {
+        
+        let linkElem = noteDocument.children.find((item) => {
             if (typeof item === 'string') return false;
             
             return item.tagName === 'a' 
-                && item.attributes?.href === window.location.origin;
-        }) !== undefined;
+                && item.attributes?.href === window.location.pathname;
+        });
 
-        if (!hasLink) noteDocument.children.push(LINK_ELEMENT);
+        if (linkElem === undefined) {
+            Object.assign(linkElem, LINK_ELEMENT);            
+            noteDocument.children.push(linkElem);
+        }
+
+        if (matchColorScheme) linkElem.children[0].attributes.fill = strokeColor;
     }
 
-    return toSvg(noteDocument);
+    if (matchColorScheme) {
+        overrideStroke = strokeColor;
+        overrideBg = bgColor;
+    }
+
+    return toSvg(noteDocument, overrideStroke, overrideBg);
 }
 
 /**

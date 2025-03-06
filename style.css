@@ -8,15 +8,11 @@
     --transition-duration: 150ms;
     --button-icon-size: 24px;
     --button-gap: 8px;
+    --primary-bg: rgb(239, 245, 241);
+    --primary-color: black;
 }
 
 /* Light/Dark mode themes */
-@media (prefers-color-scheme: light) {
-    body {
-        --primary-bg: rgb(239, 245, 241);
-        --primary-color: black;
-    }
-}
 
 @media (prefers-color-scheme: dark) {
     body {
@@ -35,6 +31,7 @@
 * {
     transition-duration: var(--transition-duration);
     font-family: sans-serif;
+    color: var(--primary-color)
 }
 
 html, body {

@@ -22,7 +22,7 @@ function createDefaultDocument() {
         },
         attributes: {
             xmlns: "http://www.w3.org/2000/svg",
-            style: "border: 2px solid #000",
+            style: "border: 2px solid #000;",
         },
         children: [
             {
